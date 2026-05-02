@@ -12,6 +12,7 @@ import java.util.List;
 @ToString
 
 public class Event {
+    private Long id;
     private String name;
     private LocalDateTime dateTime;
     private Category category;
