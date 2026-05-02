@@ -3,9 +3,12 @@ package com.eventmanager.events.service;
 import com.eventmanager.events.model.Event;
 import com.eventmanager.events.model.Reservation;
 import com.eventmanager.events.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+@Service
 
 public class ReservationService {
 

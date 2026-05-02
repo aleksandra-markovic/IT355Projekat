@@ -2,9 +2,13 @@ package com.eventmanager.events.service;
 
 import com.eventmanager.events.model.Event;
 import com.eventmanager.events.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+@Service
 
 public class EventService {
 
@@ -55,5 +59,16 @@ public class EventService {
         }
 
         return userEvents;
+    }
+
+    public Event getEventById (Long id) {
+        Event forShow;
+        for (Event e : events) {
+            if (Objects.equals(e.getId(), id)) {
+                forShow = e;
+                return forShow;
+            }
+        }
+        return null;
     }
 }
