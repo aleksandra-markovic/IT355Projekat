@@ -19,4 +19,23 @@ public class Event {
     private Location location;
     private User organizer;
     private List<User> attendees;
+
+    @Override
+    public boolean equals (Object o) {
+        if(o == null) {
+            return false;
+        }
+
+        if (this == o) return true;
+        if (getClass() != o.getClass()) return false;
+
+        Event e = (Event) o;
+
+        return id != null ? id.equals(e.id) : e.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

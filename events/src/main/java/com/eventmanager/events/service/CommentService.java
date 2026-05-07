@@ -21,10 +21,6 @@ public class CommentService {
         comments.add(comment);
     }
 
-    public boolean deleteComment (Comment comment) {
-        return comments.remove(comment);
-    }
-
     public List<Comment> getCommentsByEvent (Event event) {
         List <Comment> eventComments = new ArrayList<>();
         for (Comment c : comments) {
