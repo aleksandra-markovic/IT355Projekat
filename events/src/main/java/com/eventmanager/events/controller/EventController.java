@@ -48,7 +48,7 @@ public class EventController {
     @PostMapping("/events/delete/{id}")
     public String deleteEvent(@PathVariable Long id) {
         if (eventService.deleteEvent(id)) {
-            return "redirect:/events";
+            return "redirect:/events?deleted=true";
         } else {
             return "redirect:/events?error=true";
         }
@@ -86,9 +86,11 @@ public class EventController {
 
     @PostMapping("/events/update")
     public String updateEvent (Event event) {
-        eventService.updateEvent(event);
+        if(eventService.updateEvent(event)) {
+            return "redirect:/events?updated=true";
+        }
 
-        return "redirect:/events";
+        return "redirect:/events?updated=false";
     }
 
     @GetMapping("/my-events")

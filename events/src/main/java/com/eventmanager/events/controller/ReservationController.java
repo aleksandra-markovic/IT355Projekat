@@ -30,7 +30,7 @@ public class ReservationController {
 
         model.addAttribute("reservations", reservations);
 
-        return "my-reservations/list";
+        return "my-reservations";
     }
 
     @PostMapping("/events/{id}/reserve")

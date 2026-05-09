@@ -21,22 +21,24 @@ public class CommentService {
 
         comments = new ArrayList<>();
 
-        User user1 = new User("Aleksandra", "aleks@gmail.com");
+        User user1 = new User("Aleksandra", "aleksandra@gmail.com");
         User user2 = new User("Anja", "anja@gmail.com");
+        User user3 = new User("Marko", "marko@gmail.com");
 
 
         Event e1 = eventService.getEventById(1L);
         Event e2 = eventService.getEventById(2L);
         Event e3 = eventService.getEventById(3L);
+        Event e4 = eventService.getEventById(4L);
 
         Comment c1 = new Comment(
-                "Jedva cekam ovaj dogadjaj!",
+                "Jedva čekam ovaj događaj!",
                 user2,
                 e1
         );
 
         Comment c2 = new Comment(
-                "Bio sam prosle godine, bilo je odlicno.",
+                "Bila sam prošle godine, bilo je odlično.",
                 user1,
                 e1
         );
@@ -53,10 +55,17 @@ public class CommentService {
                 e3
         );
 
+        Comment c5 = new Comment(
+                "Biće odlično!",
+                user3,
+                e4
+        );
+
         comments.add(c1);
         comments.add(c2);
         comments.add(c3);
         comments.add(c4);
+        comments.add(c5);
     }
 
     public void addComment (Comment comment) {

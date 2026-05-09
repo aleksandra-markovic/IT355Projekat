@@ -16,13 +16,13 @@ import java.util.Objects;
 public class EventService {
 
     private List<Event> events;
-    private long idCounter = 0;
+    private long idCounter = 4L;
 
     public EventService () {
 
         events = new ArrayList<>();
 
-        User user1 = new User("Aleksandra", "aleks@gmail.com");
+        User user1 = new User("Aleksandra", "aleksandra@gmail.com");
         User user2 = new User("Marko", "marko@gmail.com");
 
         Event e1 = new Event(
@@ -40,7 +40,7 @@ public class EventService {
                 "Gaming turnir",
                 LocalDateTime.of(2026, 7, 2, 20, 0),
                 Category.OTHER,
-                new Location("Novi Sad", "Bulevar Oslobodjenja 25", "SPENS"),
+                new Location("Novi Sad", "Bulevar Oslobođenja 25", "SPENS"),
                 user2,
                 new ArrayList<>()
         );
@@ -50,7 +50,7 @@ public class EventService {
                 "Rock koncert",
                 LocalDateTime.of(2026, 8, 10, 21, 30),
                 Category.CONCERT,
-                new Location("Nis", "Generala Milojka Lesjanina 5", "Tvrdjava"),
+                new Location("Niš", "Generala Milojka Lesjanina 5", "Tvrđava"),
                 user1,
                 new ArrayList<>()
         );
@@ -60,7 +60,7 @@ public class EventService {
                 "Sajam knjiga",
                 LocalDateTime.of(2026, 9, 20, 12, 0),
                 Category.OTHER,
-                new Location("Beograd", "Bulevar Vojvode Misica", "Beogradski sajam"),
+                new Location("Beograd", "Bulevar Vojvode Mišica", "Beogradski sajam"),
                 user2,
                 new ArrayList<>()
         );
