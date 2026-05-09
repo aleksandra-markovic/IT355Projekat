@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kreiranje događaja</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Kreiranje događaja</h1>
+
+    <form action="/events" method="post" class="event-form">
+
+        <label>Naziv događaja:</label>
+        <input type="text" name="name" required>
+
+        <label>Datum i vreme:</label>
+        <input type="datetime-local" name="dateTime" required>
+
+        <label>Kategorija:</label>
+        <select name="category" required>
+
+            <option value="">Izaberi kategoriju</option>
+
+            <option th:each="cat : ${T(com.eventmanager.events.model.Category).values()}"
+                    th:value="${cat}"
+                    th:text="${cat}">
+            </option>
+
+        </select>
+
+        <label>Grad:</label>
+        <input type="text" name="location.city" required>
+
+        <label>Adresa:</label>
+        <input type="text" name="location.address" required>
+
+        <label>Naziv lokacije:</label>
+        <input type="text" name="location.locationName" required>
+
+        <button type="submit" class="btn">
+            Kreiraj događaj
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

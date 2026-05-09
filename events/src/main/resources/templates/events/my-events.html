@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Moji događaji</title>
+
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+
+  <h1>Moji događaji</h1>
+
+  <div class="event-list">
+
+    <div class="event-card" th:each="event : ${userEvents}">
+
+      <h3 th:text="${event.name}">Naziv</h3>
+
+      <p>
+        <b>Datum i vreme:</b>
+        <span th:text="${event.dateTime}">datum</span>
+      </p>
+
+      <p>
+        <b>Grad:</b>
+        <span th:text="${event.location.city}">grad</span>
+      </p>
+
+      <p>
+        <b>Adresa:</b>
+        <span th:text="${event.location.address}">adresa</span>
+      </p>
+
+      <p>
+        <b>Naziv lokacije:</b>
+        <span th:text="${event.location.locationName}">lokacija</span>
+      </p>
+
+      <p>
+        <b>Kategorija:</b>
+        <span th:text="${event.category}">kategorija</span>
+      </p>
+
+      <a th:href="@{'/events/' + ${event.id}}" class="btn small">
+        Detalji
+      </a>
+
+      <a th:href="@{'/events/edit/' + ${event.id}}" class="btn small">
+        Izmeni
+      </a>
+
+      <form th:action="@{'/events/delete/' + ${event.id}}" method="post" style="display:inline;">
+        <button type="submit" class="btn small">Obriši</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

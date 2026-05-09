@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Izmena događaja</title>
+
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Izmena događaja</h1>
+
+  <form action="/events/update" method="post" class="event-form">
+
+    <input type="hidden" name="id" th:value="${event.id}">
+
+    <label>Naziv događaja:</label>
+    <input type="text"
+           name="name"
+           th:value="${event.name}"
+           required>
+
+    <label>Datum i vreme:</label>
+    <input type="datetime-local"
+           name="dateTime"
+           th:value="${event.dateTime}"
+           required>
+
+    <label>Kategorija:</label>
+
+    <select name="category" required>
+
+      <option th:each="cat : ${T(com.eventmanager.events.model.Category).values()}"
+              th:value="${cat}"
+              th:text="${cat}"
+              th:selected="${cat == event.category}">
+      </option>
+
+    </select>
+
+    <label>Grad:</label>
+    <input type="text"
+           name="location.city"
+           th:value="${event.location.city}"
+           required>
+
+    <label>Adresa:</label>
+    <input type="text"
+           name="location.address"
+           th:value="${event.location.address}"
+           required>
+
+    <label>Naziv lokacije:</label>
+    <input type="text"
+           name="location.locationName"
+           th:value="${event.location.locationName}"
+           required>
+
+    <button type="submit" class="btn">
+      Sačuvaj izmene
+    </button>
+
+  </form>
+
+</div>
+
+</body>
+</html>

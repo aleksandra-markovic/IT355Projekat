@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalji događaja</title>
+
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+
+  <!-- PORUKA O REZERVACIJI -->
+  <div th:if="${param.reserved}" class="alert success">
+    Uspešno ste rezervisali događaj!
+  </div>
+
+  <div th:if="${param.error}" class="alert error">
+    Došlo je do greške prilikom rezervacije!
+  </div>
+
+  <div class="event-card">
+
+    <h2 th:text="${event.name}">Naziv</h2>
+
+    <p>
+      <b>Datum i vreme:</b>
+      <span th:text="${event.dateTime}">datum</span>
+    </p>
+
+    <p>
+      <b>Lokacija:</b>
+      <span th:text="${event.location.locationName}"></span>
+    </p>
+
+    <p>
+      <b>Adresa:</b>
+      <span th:text="${event.location.address}"></span>,
+      <span th:text="${event.location.city}"></span>
+    </p>
+
+    <p>
+      <b>Kategorija:</b>
+      <span th:text="${event.category}">kategorija</span>
+    </p>
+
+    <p>
+      <b>Organizator:</b>
+      <span th:text="${event.organizer.name}">organizator</span>
+    </p>
+
+    <!-- REZERVACIJA -->
+    <form th:action="@{'/events/' + ${event.id} + '/reserve'}" method="post">
+      <button type="submit" class="btn">Rezerviši</button>
+    </form>
+
+  </div>
+
+  <!-- KOMENTARI -->
+  <h3>Komentari</h3>
+
+  <div class="comment-list">
+
+    <div class="comment" th:each="c : ${comments}">
+
+      <p>
+        <b th:text="${c.author.name}">Korisnik</b>:
+        <span th:text="${c.text}">Tekst</span>
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- DODAJ KOMENTAR -->
+  <h4>Dodaj komentar</h4>
+
+  <form th:action="@{'/events/' + ${event.id} + '/comments'}" method="post">
+
+    <input type="text" name="text" placeholder="Napiši komentar..." required>
+
+    <button type="submit" class="btn">Pošalji</button>
+
+  </form>
+
+</div>
+
+</body>
+</html>

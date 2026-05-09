@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Svi događaji</title>
+
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:if="${param.created}" class="alert success">
+  Događaj je uspešno kreiran!
+</div>
+
+<div th:if="${param.updated}" class="alert success">
+  Događaj je uspešno izmenjen!
+</div>
+
+<div th:if="${param.deleted}" class="alert success">
+  Događaj je uspešno obrisan!
+</div>
+
+<div th:if="${param.error}" class="alert error">
+  Došlo je do greške!
+</div>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+
+  <h1>Svi događaji</h1>
+
+  <div class="event-list">
+
+    <div class="event-card" th:each="event : ${events}">
+
+      <h3 th:text="${event.name}">Naziv događaja</h3>
+
+      <p>
+        <b>Datum i vreme:</b>
+        <span th:text="${event.dateTime}">datum</span>
+      </p>
+
+      <p>
+        <b>Kategorija:</b>
+        <span th:text="${event.category}">kategorija</span>
+      </p>
+
+      <p>
+        <b>Grad:</b>
+        <span th:text="${event.location.city}">grad</span>
+      </p>
+
+      <a th:href="@{'/events/' + ${event.id}}" class="btn small">
+        Detalji
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
